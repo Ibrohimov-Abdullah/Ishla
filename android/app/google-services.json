@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "783513211195",
+    "project_id": "ishla-001",
+    "storage_bucket": "ishla-001.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783513211195:android:f9367067ba6f2f590ce71e",
+        "android_client_info": {
+          "package_name": "com.ishla.ishla"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJc89S-G7xgWUjNfora9bK0saqgj-6CrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
