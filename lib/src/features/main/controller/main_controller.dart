@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/features/chat/view/pages/chat_list_page.dart';
 import 'package:ishla/src/features/connection/view/pages/connection_page.dart';
 import 'package:ishla/src/features/home/view/pages/home_page.dart';
+import 'package:ishla/src/features/saved/view/pages/saved_job_list_page.dart';
 
 class MainController extends GetxController {
   RxInt selectedIndex = 0.obs;
@@ -12,11 +14,11 @@ class MainController extends GetxController {
   RxBool indexFive = false.obs;
 
   RxList<Widget> pages = [
-    JobSearchHomePage(),
-    CompaniesFollowPage(),
+    HomePage(),
+    ConnectionPage(),
     Scaffold(),
-    Scaffold(),
-    Scaffold(),
+    ChatListPage(),
+    SavedJobListPage(),
   ].obs;
 
   void colorChanger(int value) {

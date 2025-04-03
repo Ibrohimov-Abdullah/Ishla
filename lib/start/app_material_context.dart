@@ -7,9 +7,18 @@ class AppMaterialContext extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: Color(0xffECEDF0),
+        appBarTheme: AppBarTheme(
+          color: Color(0xffECEDF0),
+        ),
+        bottomAppBarTheme: BottomAppBarTheme(
+          color: Color(0xffECEDF0),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
-      home: SplashPage(),
+      home: const SplashPage(),
     );
   }
 }

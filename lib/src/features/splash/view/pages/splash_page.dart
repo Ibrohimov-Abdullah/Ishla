@@ -82,29 +82,21 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                 opacity: _opacityAnimation.value,
                 child: Transform.scale(
                   scale: _scaleAnimation.value,
-                  child: Container(
-                    height: 200.h,
-                    width: 200.w,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white,),
-                      borderRadius: BorderRadius.circular(16.r),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Ishla",
-                        style: style.displayLarge?.copyWith(
-                          color: Colors.white,
-                          fontSize: 60.sp,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black26,
-                              offset: const Offset(2, 2),
-                              blurRadius: 10,
-                            ),
-                          ],
-                        ),
+                  child: Center(
+                    child: Text(
+                      "Ishla",
+                      style: style.displayLarge?.copyWith(
+                        color: Colors.white,
+                        fontSize: 60.sp,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.0,
+                        shadows: [
+                          Shadow(
+                            color: Colors.black26,
+                            offset: const Offset(2, 2),
+                            blurRadius: 10,
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -117,3 +109,11 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     );
   }
 }
+
+/// parametrs of the container in splash
+//height: 200.h,
+//                     width: 200.w,
+//                     decoration: BoxDecoration(
+//                       border: Border.all(color: Colors.white,),
+//                       borderRadius: BorderRadius.circular(16.r),
+//                     ),

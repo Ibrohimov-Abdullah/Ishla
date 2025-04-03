@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/features/main/controller/job_post_page_controller.dart';
 import 'package:ishla/src/features/main/controller/main_controller.dart';
 
 class MainPage extends StatelessWidget {
@@ -9,6 +10,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var postController = Get.put(JobPostController());
     var controller = Get.put(MainController());
     return Scaffold(
       body: Obx(
@@ -56,7 +58,9 @@ class MainPage extends StatelessWidget {
                   : MaterialButton(
                       height: 50.h,
                       minWidth: 50.w,
-                      onPressed: () {},
+                      onPressed: () {
+                        postController.showAddPostBottomSheet(context);
+                      },
                       padding: EdgeInsets.zero,
                       shape: OutlineInputBorder(
                         borderSide: BorderSide.none,
