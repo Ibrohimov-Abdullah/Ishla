@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 import 'package:ishla/src/features/main/view/pages/main_page.dart';
 
 class DreamJobCard extends StatelessWidget {
@@ -28,7 +29,7 @@ class DreamJobCard extends StatelessWidget {
                 TextSpan(
                   text: "Dream Job",
                   style: TextStyle(
-                    color: Colors.orange.shade600,
+                    color: AppColors.lightOrange,
                     decoration: TextDecoration.underline,
                   ),
                 ),
@@ -57,7 +58,7 @@ class DreamJobCard extends StatelessWidget {
               },
               minWidth: 62.w,
               height: 62.h,
-              color: Colors.orange,
+              color: AppColors.lightOrange,
               shape: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(500),
                 borderSide: BorderSide.none,

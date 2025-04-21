@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/constants/constant_variables.dart';
@@ -65,13 +66,11 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.red,
-              Colors.orange.shade800,
-            ],
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
+          image: DecorationImage(
+            image: AssetImage(
+              "assets/images/splash.jpg",
+            ),
+            fit: BoxFit.fitHeight,
           ),
         ),
         child: Center(
@@ -83,22 +82,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
                 child: Transform.scale(
                   scale: _scaleAnimation.value,
                   child: Center(
-                    child: Text(
-                      "Ishla",
-                      style: style.displayLarge?.copyWith(
-                        color: Colors.white,
-                        fontSize: 60.sp,
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2.0,
-                        shadows: [
-                          Shadow(
-                            color: Colors.black26,
-                            offset: const Offset(2, 2),
-                            blurRadius: 10,
-                          ),
-                        ],
-                      ),
-                    ),
+                    child: Image.asset("assets/images/ishla_text.png")
                   ),
                 ),
               );

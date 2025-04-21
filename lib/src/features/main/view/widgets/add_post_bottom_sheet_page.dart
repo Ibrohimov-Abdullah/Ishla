@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/core/constants/constant_variables.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 
 import '../../controller/add_post_controller.dart';
 
@@ -12,99 +14,61 @@ class AddPostBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back, size: 24.sp),
-                onPressed: () => Get.back(),
-              ),
-              Expanded(
-                child: Text(
-                  'Add Post',
-                  style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              SizedBox(width: 40.w),
-            ],
+          Container(
+            height: 4.h,
+            width: 100.w,
+            decoration: BoxDecoration(
+              color: Colors.black,
+              borderRadius: BorderRadius.circular(12.r),
+            ),
           ),
-          SizedBox(height: 16.h),
-          CircleAvatar(
-            radius: 30.r,
-            backgroundColor: Colors.grey[200],
-            child: Icon(Icons.person, size: 30.sp, color: Colors.black),
-          ),
-          SizedBox(height: 8.h),
+          SizedBox(height: 35.h),
           Text(
-            'Orlando Diggs',
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
+            "What would you like to add?",
+            style: style.displayLarge?.copyWith(
+              fontSize: 18.sp,
+            ),
           ),
+          SizedBox(height: 10.h),
           Text(
-            'California, USA',
+            'Would you like to post your tips and experiences or\ncreate a job?',
             style: TextStyle(fontSize: 12.sp, color: Colors.grey),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: 16.h),
-          TextField(
-            onChanged: controller.updatePostTitle,
-            decoration: InputDecoration(
-              hintText: 'Write the title of your post here',
-              hintStyle: TextStyle(fontSize: 14.sp, color: Colors.grey),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.r),
-                borderSide: BorderSide(color: Colors.grey[300]!),
-              ),
+          MaterialButton(
+            onPressed: controller.navigateToLogin,
+            color: AppColors.lightOrange,
+            minWidth: 310.w,
+            height: 50.h,
+            shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide.none,
+            ),
+            child: Text(
+              'POST',
+              style: TextStyle(fontSize: 14.sp, color: Colors.white),
             ),
           ),
           SizedBox(height: 16.h),
-          TextField(
-            onChanged: controller.updatePostDescription,
-            maxLines: 3,
-            decoration: InputDecoration(
-              hintText: 'What do you want to talk about?',
-              hintStyle: TextStyle(fontSize: 14.sp, color: Colors.grey),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12.r),
-                borderSide: BorderSide(color: Colors.grey[300]!),
-              ),
+          MaterialButton(
+            onPressed: controller.navigateToAddJob,
+            color: Color(0xffD6CDFE),
+            minWidth: 310.w,
+            height: 50.h,
+            shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide.none,
             ),
-          ),
-          SizedBox(height: 16.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[900],
-                  minimumSize: Size(150.w, 50.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                child: Text(
-                  'Create a post',
-                  style: TextStyle(fontSize: 14.sp, color: Colors.white),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: controller.navigateToAddJob,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple[100],
-                  minimumSize: Size(150.w, 50.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                ),
-                child: Text(
-                  'Make a job',
-                  style: TextStyle(fontSize: 14.sp, color: Colors.black),
-                ),
-              ),
-            ],
+            child: Text(
+              'MAKE A JOB',
+              style: TextStyle(fontSize: 14.sp, color: Colors.black),
+            ),
           ),
           SizedBox(height: 16.h),
         ],

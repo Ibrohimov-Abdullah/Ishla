@@ -8,7 +8,6 @@ class JobListingWidget extends StatelessWidget {
   final String salary;
   final String salaryPeriod;
   final String jobType;
-  final IconData companyIcon;
   final Color companyIconColor;
   final void Function() onPressed;
 
@@ -21,7 +20,6 @@ class JobListingWidget extends StatelessWidget {
     required this.salary,
     required this.salaryPeriod,
     required this.jobType,
-    required this.companyIcon,
     required this.companyIconColor,
     required this.onPressed,
   });
@@ -50,7 +48,7 @@ class JobListingWidget extends StatelessWidget {
             ),
             child: Center(
               child: Icon(
-                companyIcon,
+                Icons.business,
                 size: 24.sp,
                 color: companyIconColor,
               ),

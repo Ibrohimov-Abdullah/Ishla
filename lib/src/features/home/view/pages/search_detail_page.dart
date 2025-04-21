@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:ishla/src/core/constants/constant_variables.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 import '../../controller/search_controller.dart';
 import 'filter_page.dart';
 
@@ -34,7 +35,7 @@ class SearchDetailPage extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     minWidth: 50.w,
                     height: 50.h,
-                    color: Color(0xffFCA34D),
+                    color: AppColors.lightOrange,
                     shape: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(12.r),
@@ -146,9 +147,9 @@ class SpecializationCard extends StatelessWidget {
         height: 150.h,
         padding: EdgeInsets.all(16.w),
         decoration: BoxDecoration(
-          color: isSelected ? Color(0xffFCA34D) : Color(color),
+          color: isSelected ? AppColors.lightOrange : Color(color),
           borderRadius: BorderRadius.circular(12.r),
-          border: isSelected ? Border.all(color: Colors.orange, width: 2.w) : null,
+          border: isSelected ? Border.all(color: AppColors.lightOrange, width: 2.w) : null,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.customOpacity(0.1),

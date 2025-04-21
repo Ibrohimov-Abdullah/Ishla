@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 
 import '../../controller/filter_page_controller.dart';
 
@@ -59,8 +60,9 @@ class FilterPage extends StatelessWidget {
                 style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
               ),
               Obx(
-                    () => Slider(
+                () => Slider(
                   value: controller.minSalary.value,
+                  activeColor: AppColors.lightOrange,
                   min: 0,
                   max: 24,
                   divisions: 24,
@@ -82,7 +84,7 @@ class FilterPage extends StatelessWidget {
               ),
               SizedBox(height: 8.h),
               Obx(
-                    () => Row(
+                () => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     JobTypeCheckbox(
@@ -113,7 +115,7 @@ class FilterPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: controller.applyFilters,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[900],
+                  backgroundColor: AppColors.lightOrange,
                   minimumSize: Size(double.infinity, 50.h),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.r),
@@ -140,6 +142,7 @@ class FilterDropdown extends StatelessWidget {
   final Function(String) onChanged;
 
   const FilterDropdown({
+    super.key,
     required this.label,
     required this.value,
     required this.items,
@@ -157,7 +160,7 @@ class FilterDropdown extends StatelessWidget {
         ),
         SizedBox(height: 8.h),
         Obx(
-              () => Container(
+          () => Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey[300]!),
@@ -190,6 +193,7 @@ class JobTypeCheckbox extends StatelessWidget {
   final Function(bool?) onChanged;
 
   const JobTypeCheckbox({
+    super.key,
     required this.label,
     required this.value,
     required this.onChanged,
@@ -201,9 +205,13 @@ class JobTypeCheckbox extends StatelessWidget {
       children: [
         Checkbox(
           value: value,
+          activeColor: AppColors.lightOrange,
           onChanged: onChanged,
         ),
-        Text(label, style: TextStyle(fontSize: 14.sp)),
+        Text(
+          label,
+          style: TextStyle(fontSize: 14.sp),
+        ),
       ],
     );
   }

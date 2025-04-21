@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 
 class BottomActionButtons extends StatelessWidget {
   const BottomActionButtons({super.key});
@@ -37,7 +38,7 @@ class BottomActionButtons extends StatelessWidget {
             shape: OutlineInputBorder(borderRadius: BorderRadius.circular(8.r), borderSide: BorderSide.none),
             padding: EdgeInsets.zero,
             height: 50.h,
-            color: const Color(0xFF130160),
+            color: AppColors.lightOrange,
             child: Center(
               child: Text(
                 'My connection',

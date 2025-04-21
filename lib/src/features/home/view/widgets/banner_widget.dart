@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 
 class PromotionalBannerWidget extends StatelessWidget {
   const PromotionalBannerWidget({super.key});
@@ -10,11 +11,11 @@ class PromotionalBannerWidget extends StatelessWidget {
       width: double.infinity,
       height: 170.h,
       decoration: BoxDecoration(
-        color: const Color(0xFF4B39EF),
+        color: AppColors.lightOrange,
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Row(
-        children: [
+        children: [ 
           // Text content
           Expanded(
             flex: 2,

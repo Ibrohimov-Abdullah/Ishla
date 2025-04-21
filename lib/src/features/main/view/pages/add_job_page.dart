@@ -77,7 +77,7 @@ class JobFormField extends StatelessWidget {
   final Function(String) onChanged;
   final int maxLines;
 
-  const JobFormField({
+  const JobFormField({super.key,
     required this.label,
     required this.onChanged,
     this.maxLines = 1,

@@ -33,6 +33,8 @@ class ChatListPage extends StatelessWidget {
 
 // Search Bar Widget
 class SearchBarWidget extends StatelessWidget {
+  const SearchBarWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -72,6 +74,8 @@ class ChatListWidget extends StatelessWidget {
     // Add more dummy data as needed
   ];
 
+  ChatListWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -100,7 +104,7 @@ class ChatListItem extends StatelessWidget {
   final bool unread;
   final VoidCallback onTap;
 
-  const ChatListItem({
+  const ChatListItem({super.key,
     required this.name,
     required this.message,
     required this.time,

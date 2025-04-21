@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ishla/src/features/home/controller/home_page_controller.dart';
-import 'package:ishla/src/features/connection/view/pages/connection_detail_page.dart';
-import 'package:ishla/src/features/home/view/widgets/custom_search_bar.dart';
-import 'package:ishla/src/features/home/view/widgets/section_title_widget.dart';
 import 'package:get/get.dart';
-
+import 'package:ishla/src/features/home/view/pages/home_detail_page.dart';
+import '../../controller/home_page_controller.dart';
 import '../widgets/banner_widget.dart';
+import '../widgets/custom_search_bar.dart';
 import '../widgets/header_widget.dart';
 import '../widgets/job_listing_widget.dart';
-import 'home_detail_page.dart';
+import '../widgets/section_title_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -42,63 +40,64 @@ class HomePage extends StatelessWidget {
 
                       // Recent Job List Text
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SectionTitleWidget(title: 'Recent Job List'),
+                          TextButton(
+                            onPressed: () => Get.to(() => HomeDetailPage()),
+                            child: Text(
+                              'See All',
+                              style: TextStyle(
+                                color: Colors.orange,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       SizedBox(height: 15.h),
 
-                      // Job Listing
-                      JobListingWidget(
-                        jobTitle: 'Product Designer',
-                        company: 'Google Inc.',
-                        location: 'California, USA',
-                        salary: '\$15K',
-                        salaryPeriod: '/month',
-                        jobType: 'Full time',
-                        companyIcon: Icons.apple,
-                        // Use any other icon if needed
-                        companyIconColor: Colors.black,
-                        onPressed: () {
-                          Get.to(
-                            JobDescriptionPage(
-                              job: controller.sampleJob,
+                      // Job Listings
+                      Obx(() {
+                        if (controller.isLoading.value) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.orange,
                             ),
                           );
-                        },
-                      ),
-                      SizedBox(height: 15.h),
-                      JobListingWidget(
-                        jobTitle: 'Web Designer',
-                        company: 'Prada Inc.',
-                        location: 'New York, USA',
-                        salary: '\$20K',
-                        salaryPeriod: '/month',
-                        jobType: 'Part time',
-                        companyIcon: Icons.join_full,
-                        // Use any other icon if needed
-                        companyIconColor: Colors.black,
-                        onPressed: () {},
-                      ),
-                      SizedBox(height: 15.h),
-                      JobListingWidget(
-                        jobTitle: 'Flutter Developer',
-                        company: 'Google Inc.',
-                        location: 'New York, USA',
-                        salary: '\$25K',
-                        salaryPeriod: '/month',
-                        jobType: 'Part time',
-                        companyIcon: Icons.flutter_dash,
-                        // Use any other icon if needed
-                        companyIconColor: Colors.black,
-                        onPressed: () {},
-                      ),
+                        }
+
+                        return Column(
+                          children: List.generate(
+                            3,
+                            (index) {
+                              // Convert int value to IconData and Color
+
+
+                              return Column(
+                                children: [
+                                  JobListingWidget(
+                                    jobTitle: 'Untitled Position',
+                                    company: 'Unknown Company',
+                                    location: 'Remote',
+                                    salary: '\$10 000',
+                                    salaryPeriod: '/month',
+                                    jobType: 'Full time',
+                                    companyIconColor: Colors.black,
+                                    onPressed: () => controller.navigateToJobDetail(),
+                                  ),
+                                  SizedBox(height: 15.h),
+                                ],
+                              );
+                            },
+                          ),
+                        );
+                      }),
                     ],
                   ),
                 ),
               ),
-              // Promotional Banner
             ],
           ),
         ),

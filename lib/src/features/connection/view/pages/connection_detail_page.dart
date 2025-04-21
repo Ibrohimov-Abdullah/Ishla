@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ishla/src/core/constants/constant_variables.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 
 class DetailPage extends StatelessWidget {
   final String companyLogo;
@@ -445,7 +446,7 @@ class DetailPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: AppColors.lightOrange,
             foregroundColor: Colors.white,
             minimumSize: const Size(double.infinity, 48),
             shape: RoundedRectangleBorder(

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../pages/profile_page.dart';
-
 class GenderSelectionWidget extends StatelessWidget {
   const GenderSelectionWidget({super.key});
 
@@ -36,6 +34,7 @@ class GenderSelectionWidget extends StatelessWidget {
     );
   }
 }
+
 class GenderOption extends StatelessWidget {
   final String label;
   final bool isSelected;

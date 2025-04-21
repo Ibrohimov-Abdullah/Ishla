@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/core/style/app_colors.dart';
 import 'package:ishla/src/features/main/controller/job_post_page_controller.dart';
 import 'package:ishla/src/features/main/controller/main_controller.dart';
 
@@ -66,7 +67,7 @@ class MainPage extends StatelessWidget {
                         borderSide: BorderSide.none,
                         borderRadius: BorderRadius.circular(500),
                       ),
-                      color: Color(0xffFF9228),
+                      color: AppColors.lightOrange,
                       child: Icon(
                         Icons.add,
                         color: Colors.white,
