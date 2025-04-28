@@ -40,39 +40,24 @@ class MainPage extends StatelessWidget {
               label: "",
             ),
             BottomNavigationBarItem(
-              icon: controller.indexThree.value
-                  ? MaterialButton(
-                      height: 50.h,
-                      minWidth: 50.w,
-                      shape: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(500),
-                      ),
-                      onPressed: () {},
-                      padding: EdgeInsets.zero,
-                      color: Color(0xffFF9228),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    )
-                  : MaterialButton(
-                      height: 50.h,
-                      minWidth: 50.w,
-                      onPressed: () {
-                        postController.showAddPostBottomSheet(context);
-                      },
-                      padding: EdgeInsets.zero,
-                      shape: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(500),
-                      ),
-                      color: AppColors.lightOrange,
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
+              icon: MaterialButton(
+                height: 50.h,
+                minWidth: 50.w,
+                onPressed: () {
+                  controller.indexTwo.value = true;
+                  postController.showAddPostBottomSheet(context);
+                },
+                padding: EdgeInsets.zero,
+                shape: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(500),
+                ),
+                color: AppColors.lightOrange,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+              ),
               label: "",
             ),
             BottomNavigationBarItem(

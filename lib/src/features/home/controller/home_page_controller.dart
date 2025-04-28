@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:ishla/src/core/data/models/companies_model.dart';
+import 'package:ishla/src/core/data/service/dio_service.dart';
 
 import '../view/pages/home_detail_page.dart';
 
@@ -23,17 +27,24 @@ class HomePageController extends GetxController {
   void onInit() {
     super.onInit();
     fetchRecentJobs();
+    getCompanies();
   }
 
-  @override
-  void onClose() {
-    searchController.dispose();
-    super.onClose();
-  }
+
 
   Future<void> fetchRecentJobs() async {}
 
   void navigateToJobDetail() {
     Get.to(() => HomeDetailPage());
+  }
+
+  RxList<CompaniesModel> companies = <CompaniesModel>[].obs;
+  RxBool isCompaniesCame = false.obs;
+
+  getCompanies() async{
+    String? info = await DioService.getData(ApiConstants.apiCompanies,);
+    if(info != null){
+      log("\n\nCompanies Came\t$info\n\n");
+    }
   }
 }

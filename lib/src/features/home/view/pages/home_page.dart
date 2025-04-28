@@ -73,8 +73,6 @@ class HomePage extends StatelessWidget {
                             3,
                             (index) {
                               // Convert int value to IconData and Color
-
-
                               return Column(
                                 children: [
                                   JobListingWidget(
@@ -93,7 +91,7 @@ class HomePage extends StatelessWidget {
                             },
                           ),
                         );
-                      }),
+                      },),
                     ],
                   ),
                 ),

@@ -16,7 +16,7 @@ class MainController extends GetxController {
   RxList<Widget> pages = [
     HomePage(),
     ConnectionPage(),
-    Scaffold(),
+    ConnectionPage(),
     ChatListPage(),
     SavedJobListPage(),
   ].obs;

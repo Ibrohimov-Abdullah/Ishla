@@ -14,7 +14,7 @@ dependencies:
   # firebase stuff
   firebase_core: ^3.12.1
   # internet service
-  dio: ^5.7.0
+  dio: ^5.8.0+1
   # svg
   flutter_svg: ^2.0.10+1
   #  # lottie animation
@@ -28,7 +28,7 @@ dependencies:
   # state management
   get: ^4.6.6
   # for app storage
-  shared_preferences: ^2.3.2
+  shared_preferences: ^2.5.3
   # google sign in
   google_sign_in: ^6.2.2
   # cloud firestore

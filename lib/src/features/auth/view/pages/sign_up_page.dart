@@ -1,78 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ishla/src/core/style/app_colors.dart';
-import 'package:ishla/src/features/auth/view/pages/sign_up_page.dart';
-import '../../controller/login_controller.dart';
-import 'forget_password_page.dart';
+import 'package:ishla/src/core/constants/constant_variables.dart';
+import 'package:ishla/src/features/auth/controller/sign_up_controller.dart';
+import 'package:ishla/src/features/auth/view/pages/forget_password_page.dart';
 
-class LoginPage extends StatelessWidget {
-  final LoginController controller = Get.put(LoginController());
+import '../../../../core/style/app_colors.dart';
 
-  LoginPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(SignUpController());
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: 50.h),
-              HeaderWidget(),
-              SizedBox(height: 30.h),
-              FormWidget(controller: controller),
-              SizedBox(height: 20.h),
-              ButtonsWidget(),
-              SizedBox(height: 20.h),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            50.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/sign_up_icon.svg",
+                ),
+              ],
+            ),
+            20.verticalSpace,
+            Text(
+              "Create an Account",
+              style: style.displayLarge?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            5.verticalSpace,
+            Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+              style: style.titleMedium?.copyWith(
+                fontWeight: FontWeight.w400,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            30.verticalSpace,
+            Padding(
+              padding: REdgeInsets.symmetric(horizontal: 20.0),
+              child: SignUpFormWidget(
+                controller: controller,
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-// Header Widget
-class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({super.key});
+class SignUpFormWidget extends StatelessWidget {
+  final SignUpController controller;
 
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          "Welcome Back",
-          style: GoogleFonts.poppins(
-            fontSize: 28.sp,
-            fontWeight: FontWeight.bold,
-            color: Colors.black87,
-          ),
-        ),
-        SizedBox(height: 12.h),
-        Text(
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
-          textAlign: TextAlign.center,
-          style: GoogleFonts.poppins(
-            fontSize: 14.sp,
-            color: Colors.grey[600],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-// Form Widget
-class FormWidget extends StatelessWidget {
-  final LoginController controller;
-
-  const FormWidget({super.key, required this.controller});
+  const SignUpFormWidget({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +69,48 @@ class FormWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         20.verticalSpace,
+        Text(
+          "Full name",
+          style: GoogleFonts.poppins(
+            fontSize: 12.sp,
+            color: Colors.black,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        SizedBox(height: 8.h),
+        Obx(
+              () => TextField(
+            controller: controller.fullNameController,
+            decoration: InputDecoration(
+              hintText: "Brandone Louis",
+              hintStyle: GoogleFonts.poppins(
+                fontSize: 14.sp,
+                color: controller.fullNameError.value.isNotEmpty ? Colors.red : Colors.black54,
+              ),
+              filled: true,
+              fillColor: Colors.grey[100],
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.r),
+                borderSide: controller.fullNameError.value.isNotEmpty
+                    ? BorderSide(color: Colors.red, width: 1.w)
+                    : BorderSide.none,
+              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
+              errorText: controller.fullNameError.value.isNotEmpty
+                  ? controller.fullNameError.value
+                  : null,
+              errorStyle: GoogleFonts.poppins(
+                fontSize: 12.sp,
+                color: Colors.red,
+              ),
+            ),
+            onChanged: (value) {
+              // Clear error when user starts typing
+              controller.fullNameError.value = '';
+            },
+          ),
+        ),
+        SizedBox(height: 16.h),
         Text(
           "Email",
           style: GoogleFonts.poppins(
@@ -200,7 +231,7 @@ class FormWidget extends StatelessWidget {
               },
               child: Text(
                 "Forgot Password?",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: 14.sp,
                   color: Colors.blue,
                 ),
@@ -208,23 +239,24 @@ class FormWidget extends StatelessWidget {
             ),
           ],
         ),
+        30.verticalSpace,
+        SignUpButtonsWidget(),
       ],
     );
   }
 }
 
-// Buttons Widget
-class ButtonsWidget extends StatelessWidget {
-  const ButtonsWidget({super.key});
+class SignUpButtonsWidget extends StatelessWidget {
+  const SignUpButtonsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final LoginController controller = Get.find();
+    SignUpController controller = Get.find();
     return Column(
       children: [
         ElevatedButton(
           onPressed: () {
-            controller.validateAndLogin();
+            controller.validateAndRegister();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.lightOrange,
@@ -234,7 +266,7 @@ class ButtonsWidget extends StatelessWidget {
             ),
           ),
           child: Text(
-            "LOGIN",
+            "SIGN UP",
             style: GoogleFonts.poppins(
               fontSize: 16.sp,
               fontWeight: FontWeight.w600,
@@ -277,7 +309,7 @@ class ButtonsWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "You don’t have an account yet?",
+              "You already have an account?",
               style: GoogleFonts.poppins(
                 fontSize: 14.sp,
                 color: Colors.grey[600],
@@ -285,12 +317,10 @@ class ButtonsWidget extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Get.to(
-                  SignUpPage(),
-                );
+                Get.back();
               },
               child: Text(
-                "Sign up",
+                "Sign in",
                 style: GoogleFonts.poppins(
                   fontSize: 14.sp,
                   color: Colors.orange,
